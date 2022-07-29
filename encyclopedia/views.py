@@ -37,7 +37,7 @@ def search(request):
         lst = []
 
         for entry in entries:
-            if query.lower() in entry.lower():
+            if query in entry.lower():
                 lst.append(entry)
         return render(request, "encyclopedia/index.html", {
             "entries":  lst,
@@ -50,6 +50,26 @@ def search(request):
         "entry": mark(query)
     }) 
         
+
+def gotoPage(request):
+
+    return render(request, "encyclopedia/newPage.html")
+
+
+def savepage(request):
+    if request.method == 'POST':
+        title = request.post['newpagetitle']
+        txt = "#"+title+"\n\n"+request.POST['newpagetext']
+        if title == "":
+            return render(request, "encyclopedia/newPage.html")
+        if title in util.list_entries():
+            return render(request , "encyclopedia/exists.html", {
+                "query" : title,
+            })
+        util.save_entry(title,txt)
+        return redirect(entry, entry = title)
+
+
 
 
 
