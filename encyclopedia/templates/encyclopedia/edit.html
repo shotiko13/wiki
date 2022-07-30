@@ -9,9 +9,9 @@
         {% csrf_token %}
         <h1>{{ entrytitle }}</h1>
         <div class="form-group">
-            <textarea style="height: 60vh;" name="text">{{entrytext}}</textarea>
+            <textarea style="height: 60vh;" name="txt">{{txt}}</textarea>
         </div>
-        <input type="hidden" name="title" value="{{entrytitle}}">
+        <input type="hidden" name="title" value="{{title}}">
         <button type="submit">Save</button>
     </form>
 {% endblock %}
