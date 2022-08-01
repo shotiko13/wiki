@@ -1,3 +1,0 @@
-#Gocha
-
-abs
